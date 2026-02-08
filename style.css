@@ -93,6 +93,18 @@ nav.dark {
     color: var(--primary);
 }
 
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+nav.dark .menu-toggle {
+    color: white;
+}
+
 .btn-nav {
     background: var(--primary);
     color: white !important;
@@ -513,15 +525,10 @@ footer {
 
 /* Responsive */
 @media (max-width: 992px) {
-
-    .hero-content,
-    .hero-text,
-    .services-content {
+    .hero-content {
         grid-template-columns: 1fr;
-    }
-
-    .hero-text {
         text-align: center;
+        gap: 3rem;
     }
 
     .hero-text h1 {
@@ -529,8 +536,12 @@ footer {
     }
 
     .hero-text p {
-        margin-left: auto;
-        margin-right: auto;
+        margin: 0 auto 2.5rem;
+    }
+
+    .services-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
     }
 
     .services-grid {
@@ -541,6 +552,7 @@ footer {
         flex-direction: column;
         text-align: center;
         gap: 3rem;
+        padding: 3rem 1.5rem;
     }
 
     .cta-img {
@@ -550,8 +562,31 @@ footer {
 }
 
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     .nav-links {
-        display: none;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        height: 100vh;
+        background: white;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+        transition: 0.5s ease-in-out;
+        z-index: 1001;
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        margin: 1.5rem 0;
     }
 
     .stats-grid {
@@ -560,5 +595,35 @@ footer {
 
     .progress-container {
         grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem;
+    }
+
+    .section-title h2 {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .cta-text h2 {
+        font-size: 2.2rem;
+    }
+
+    .footer-socials {
+        gap: 1rem;
     }
 }
